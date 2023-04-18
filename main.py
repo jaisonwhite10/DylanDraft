@@ -24,7 +24,6 @@ bicep_product_price_id = bicep_product.default_price
 chest_product = stripe.Product.retrieve(id=os.environ['CHEST_PRODUCT'])
 chest_product_price_id = chest_product.default_price
 
-# test = stripe.Product.retrieve(params={'metadata':{'product-id':'1'}}) does not work need product id
 print(ab_product)
 @app.route('/')
 def home():
