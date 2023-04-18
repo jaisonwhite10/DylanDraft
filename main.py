@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 
 Bootstrap(app)
 
-YOUR_DOMAIN = 'http://127.0.0.1:5000'
+YOUR_DOMAIN = os.environ['DOMAIN']
 # response = request.get('')
 ab_product = stripe.Product.retrieve(id=os.environ['AB_PRODUCT'])
 ab_product_price_id = ab_product.default_price
