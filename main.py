@@ -1,5 +1,9 @@
 from flask import Flask,request,render_template,redirect,url_for,flash
 from flask_bootstrap import Bootstrap
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
 import smtplib
 import stripe
 import os
@@ -42,14 +46,16 @@ def services():
 def checkout(prod_id):
 
 
-    return render_template('checkout2.html',prod_id=prod_id,ab_product=ab_product,bicep_product=bicep_product,chest_product=chest_product)
+    return render_template('checkout.html',prod_id=prod_id,ab_product=ab_product,bicep_product=bicep_product,chest_product=chest_product)
 
 @app.route('/create-checkout-session/<prod_id>', methods=['GET','POST'])
 def create_checkout_session(prod_id):
-
+    checkout_id = ''
     if prod_id == '1':
         try:
             checkout_session = stripe.checkout.Session.create(
+                invoice_creation={"enabled": True},
+
                 line_items=[
                     {
                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
@@ -58,17 +64,19 @@ def create_checkout_session(prod_id):
                     },
                 ],
                 mode='payment',
-                success_url=YOUR_DOMAIN + '/success',
+                success_url=YOUR_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=YOUR_DOMAIN + '/cancel',
             )
         except Exception as e:
             return str(e)
-
+        checkout_id = checkout_session.id
         return redirect(checkout_session.url, code=303)
 
     elif prod_id == '2':
         try:
             checkout_session = stripe.checkout.Session.create(
+                invoice_creation={"enabled": True},
+
                 line_items=[
                     {
                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
@@ -77,7 +85,7 @@ def create_checkout_session(prod_id):
                     },
                 ],
                 mode='payment',
-                success_url=YOUR_DOMAIN + '/success',
+                success_url=YOUR_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=YOUR_DOMAIN + '/cancel',
             )
         except Exception as e:
@@ -88,6 +96,8 @@ def create_checkout_session(prod_id):
     else:
         try:
             checkout_session = stripe.checkout.Session.create(
+                invoice_creation={"enabled": True},
+
                 line_items=[
                     {
                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
@@ -96,7 +106,7 @@ def create_checkout_session(prod_id):
                     },
                 ],
                 mode='payment',
-                success_url=YOUR_DOMAIN + '/success',
+                success_url=YOUR_DOMAIN + '/success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=YOUR_DOMAIN + '/cancel',
             )
         except Exception as e:
@@ -107,8 +117,48 @@ def create_checkout_session(prod_id):
 
 
 
-@app.route('/success')
+
+
+@app.route('/success/',methods=['GET','POST'])
 def successful_checkout():
+    session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
+    line_items = stripe.checkout.Session.list_line_items(request.args.get('session_id'), limit=5)
+
+    invoice_product = line_items.data[0].price.product
+    customer = stripe.Customer.retrieve(session.customer)
+
+    print(session.payment_status)
+    if session.payment_status == 'paid':
+        message = MIMEMultipart()
+        message["From"] = my_email
+        message["To"] = customer.email
+        message["Subject"] = 'Product'
+        body = 'This is your product'
+        message.attach(MIMEText(body, "plain"))
+        if invoice_product == os.environ['AB_PRODUCT']:
+            filename = '../static/files/HA RA SU90,WAITS 33-17-15 H.pdf'
+        elif invoice_product == os.environ['BICEP_PRODUCT']:
+            filename = '../static/files/HA RA SU90,WAITS 33-17-15 H Plat.pdf'
+        else:
+            filename = '../static/files/HA RA SU90.pdf'
+        with open(filename, "rb") as attachment:
+            part = MIMEBase('application','octet-stream')
+            part.set_payload(attachment.read())
+        encoders.encode_base64(part)
+        part.add_header(
+            "Content-Disposition",
+            f"attachment; filename= {filename}",
+        )
+        message.attach(part)
+        text = message.as_string()
+        with smtplib.SMTP(host='smtp.mail.yahoo.com', port=587) as connection:
+            connection.starttls()
+            connection.login(user=my_email, password=password)
+
+            connection.sendmail(from_addr=my_email, to_addrs=customer.email,
+                                msg=text.encode(
+                                    'utf-8'))
+    print(customer)
     return render_template('success.html')
 
 @app.route('/cancel')
@@ -124,7 +174,7 @@ def contact_me():
         subject = request.form['subject']
         message = request.form['message']
         print('true')
-        with smtplib.SMTP(host='smtp.gmail.com', port=587) as connection:
+        with smtplib.SMTP(host='smtp.mail.yahoo.com', port=587) as connection:
             connection.starttls()
             connection.login(user=my_email, password=password)
 

@@ -83,12 +83,21 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="card" style="width: 18rem;">
-              <img src="static/assets/img/Dylan2.jpg" class="card-img-top" alt="...">
+              <div class="img-container">
+                <img src="static/assets/img/Dylan2.jpg" class="image card-img-top" alt="...">
+
+              </div>
+
               <div class="card-body">
                 <h5 class="card-title">{{ab_product.name}}</h5>
-                <p class="card-text">{{ab_product.metadata['test-price']}}</p>
-                <a href="{{ url_for('checkout',prod_id=ab_product.metadata['product-id']) }}" class="btn btn-primary" onclick="">Buy</a>
+                <p class="card-subtitle mb-2 text-muted">{{ab_product.metadata['test-price']}}</p>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.</p>
+                <div class="overlay">
+                  <a href="{{ url_for('checkout',prod_id=ab_product.metadata['product-id']) }}" class="btn btn-outline-secondary" onclick="{{ url_for('create_checkout_session',prod_id=ab_product.metadata['product-id']) }}">Buy</a>
+                </div>
               </div>
+
             </div>
 <!--            <div class="icon-box iconbox-blue">-->
 <!--              <div class="icon">-->
@@ -108,8 +117,10 @@
               <img src="static/assets/img/Dylan4.jpg" class="card-img-top-chest" alt="...">
               <div class="card-body">
                 <h5 class="card-title">{{chest_product.name}}</h5>
-                <p class="card-text">{{chest_product.metadata['test-price']}}</p>
-                <a href="{{ url_for('checkout',prod_id=chest_product.metadata['product-id']) }}" class="btn btn-primary">Buy</a>
+                <p class="card-subtitle">{{chest_product.metadata['test-price']}}</p>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.</p>
+                <a href="{{ url_for('checkout',prod_id=chest_product.metadata['product-id']) }}" class="btn btn-outline-secondary">Buy</a>
               </div>
             </div>
 <!--            <div class="icon-box iconbox-orange ">-->
@@ -130,8 +141,10 @@
               <img src="static/assets/img/Dylan7.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">{{bicep_product.name}}</h5>
-                <p class="card-text">{{bicep_product.metadata['test-price']}}</p>
-                <a href="{{ url_for('checkout',prod_id=bicep_product.metadata['product-id']) }}" class="btn btn-primary">Buy</a>
+                <p class="card-subtitle">{{bicep_product.metadata['test-price']}}</p>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.</p>
+                <a href="{{ url_for('checkout',prod_id=bicep_product.metadata['product-id']) }}" class="btn btn-outline-secondary">Buy</a>
               </div>
             </div>
 <!--            <div class="icon-box iconbox-pink">-->

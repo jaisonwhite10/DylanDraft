@@ -53,7 +53,7 @@
 <!--          <li><a href="resume.html">Resume</a></li>-->
           <li><a href="{{url_for('services')}}">Services</a></li>
 <!--          <li><a href="portfolio.html">Portfolio</a></li>-->
-          <li><a class="active" href="{{ url_for('contact_me') }}">Contact</a></li>
+          <li><a  href="{{ url_for('contact_me') }}">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -95,7 +95,7 @@
 <!--  </button>-->
 <!--</div>-->
       <h1 class="hero-header">Dylan Earl Fitness</h1><i class="bi bi-heart-fill"></i>
-      <a href="about.html" class="btn-about">Start your journey!</a>
+      <a href="{{url_for('services')}}" class="btn-about">Start your journey!</a>
     </div>
   </section><!-- End Hero -->
 
