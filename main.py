@@ -119,7 +119,7 @@ def create_checkout_session(prod_id):
 
 
 
-@app.route('/success/',methods=['GET','POST'])
+@app.route('/success',methods=['GET','POST'])
 def successful_checkout():
     session = stripe.checkout.Session.retrieve(request.args.get('session_id'))
     line_items = stripe.checkout.Session.list_line_items(request.args.get('session_id'), limit=5)
