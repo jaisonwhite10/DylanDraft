@@ -136,11 +136,11 @@ def successful_checkout():
         body = 'This is your product'
         message.attach(MIMEText(body, "plain"))
         if invoice_product == os.environ['AB_PRODUCT']:
-            filename = '../static/files/HA RA SU90,WAITS 33-17-15 H.pdf'
+            filename = 'static/files/HA RA SU90,WAITS 33-17-15 H.pdf'
         elif invoice_product == os.environ['BICEP_PRODUCT']:
-            filename = '../static/files/HA RA SU90,WAITS 33-17-15 H Plat.pdf'
+            filename = 'static/files/HA RA SU90,WAITS 33-17-15 H Plat.pdf'
         else:
-            filename = '../static/files/HA RA SU90.pdf'
+            filename = 'static/files/HA RA SU90.pdf'
         with open(filename, "rb") as attachment:
             part = MIMEBase('application','octet-stream')
             part.set_payload(attachment.read())
