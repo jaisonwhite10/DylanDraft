@@ -28,7 +28,7 @@ bicep_product_price_id = bicep_product.default_price
 chest_product = stripe.Product.retrieve(id=os.environ['CHEST_PRODUCT'])
 chest_product_price_id = chest_product.default_price
 
-print(ab_product)
+# print(ab_product)
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -127,7 +127,7 @@ def successful_checkout():
     invoice_product = line_items.data[0].price.product
     customer = stripe.Customer.retrieve(session.customer)
 
-    print(session.payment_status)
+    # print(session.payment_status)
     if session.payment_status == 'paid':
         message = MIMEMultipart()
         message["From"] = my_email
@@ -158,7 +158,7 @@ def successful_checkout():
             connection.sendmail(from_addr=my_email, to_addrs=customer.email,
                                 msg=text.encode(
                                     'utf-8'))
-    print(customer)
+    # print(customer)
     return render_template('success.html')
 
 @app.route('/cancel')
