@@ -485,6 +485,155 @@ h6 {
   background: #34b7a7;
 }
 
+@media (max-width: 840px) {
+    #hero .btn-about {
+        margin-right: 100px;
+    }
+}
+
+@media (max-width: 740px) {
+    #hero .btn-about {
+        margin-right: 200px;
+    }
+}
+
+@media (max-width: 675px) {
+    #hero .btn-about {
+        margin-right: 300px;
+    }
+}
+
+@media (max-width: 645px) {
+    #hero .btn-about {
+        margin-right: 400px;
+    }
+}
+
+@media (max-width: 580px) {
+    #hero .btn-about {
+        margin-right: 500px;
+    }
+}
+
+@media (max-width: 528px) {
+    #hero .btn-about {
+        margin-right: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero .btn-about {
+        margin-right: 700px;
+    }
+}
+
+@media (max-width: 428px) {
+    #hero .btn-about {
+        margin-right: 800px;
+    }
+}
+
+@media (max-width: 840px) {
+    #hero .hero-header {
+        margin-right: 100px;
+    }
+}
+
+@media (max-width: 740px) {
+    #hero .hero-header {
+        margin-right: 200px;
+    }
+}
+
+@media (max-width: 675px) {
+    #hero .hero-header {
+        margin-right: 300px;
+    }
+}
+
+@media (max-width: 645px) {
+    #hero .hero-header {
+        margin-right: 400px;
+    }
+}
+
+@media (max-width: 580px) {
+    #hero .hero-header {
+        margin-right: 500px;
+    }
+}
+
+@media (max-width: 528px) {
+    #hero .hero-header {
+        margin-right: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero .hero-header {
+        margin-right: 700px;
+    }
+}
+
+@media (max-width: 428px) {
+    #hero .hero-header {
+        margin-right: 800px;
+    }
+}
+
+@media (max-width: 840px) {
+    #hero .bi-heart-fill {
+        margin-right: 100px;
+    }
+}
+
+@media (max-width: 740px) {
+    #hero .bi-heart-fill {
+        margin-right: 200px;
+    }
+}
+
+@media (max-width: 675px) {
+    #hero .bi-heart-fill {
+        margin-right: 300px;
+    }
+}
+
+@media (max-width: 645px) {
+    #hero .bi-heart-fill {
+        margin-right: 400px;
+    }
+}
+
+@media (max-width: 580px) {
+    #hero .bi-heart-fill {
+        margin-right: 500px;
+    }
+}
+
+@media (max-width: 528px) {
+    #hero .bi-heart-fill {
+        margin-right: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero .bi-heart-fill {
+        margin-right: 700px;
+    }
+}
+
+@media (max-width: 428px) {
+    #hero .bi-heart-fill {
+        margin-right: 800px;
+    }
+}
+
+#hero .btn-about:hover {
+  background: #3dc8b7;
+}
+
+
 #hero .btn-about:hover {
   background: #3dc8b7;
 }
@@ -498,12 +647,15 @@ h6 {
 @media (max-width: 992px) {
   #hero:before {
     content: "";
-    background: rgba(255, 255, 255, 0.8);
+   /* background: rgba(255, 255, 255, 0.8);*/
     position: absolute;
     bottom: 0;
     top: 0;
     left: 0;
     right: 0;
+
+
+    background-size: cover
   }
 
   #hero h1 {
@@ -1226,6 +1378,7 @@ section {
 }
 
 .contact footer {padding: 10px;}
+
 .contact .php-email-form {
   width: 100%;
   background: #fff;
@@ -1321,12 +1474,25 @@ background: #e9e8e6;
   font-size: 14px;
   text-align: center;
   margin-top: 100px;
-  position: absolute;
+  position: static;
   right: 0;
   bottom: 0;
   left: 0;
 }
-
+@media (min-width: 977px) {
+    .footer-body #footer {
+      background: #e9e8e6;
+      padding: 30px 0;
+      color: #222222;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 100px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+}
 .success-body #footer {
 background: #e9e8e6;
   padding: 30px 0;
@@ -1334,7 +1500,7 @@ background: #e9e8e6;
   font-size: 14px;
   text-align: center;
   margin-top: 100px;
-  position: relative;
+  position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
@@ -1395,8 +1561,9 @@ background: #e9e8e6;
   font-size: 14px;
   text-align: center;
   margin-top: 100px;
-  position: relative;
+  position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: -1;
 }
