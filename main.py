@@ -163,7 +163,8 @@ def successful_checkout():
 
 @app.route('/cancel')
 def cancel_checkout():
-    return render_template('cancel.html')
+    return redirect(url_for('services'))
+    # return render_template('cancel.html')
 
 @app.route('/contact_me',methods=['GET','POST'])
 def contact_me():
