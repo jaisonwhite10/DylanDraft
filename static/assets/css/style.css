@@ -432,6 +432,7 @@ h6 {
   height: 100vh;
   background: url("../img/Dylan4.jpg") top right;
   background-size: cover;
+  position: fixed;
 }
 /*#hero .bg-img-1 {background: url("../img/dylan test.jpeg");}
 #hero .bg-img-2 {background-image: url("../img/dylan test.jpeg");}
