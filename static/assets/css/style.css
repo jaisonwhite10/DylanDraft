@@ -628,6 +628,8 @@ h6 {
         margin-right: 800px;
     }
 }
+/* add media query for less than 400 px */
+
 
 #hero .btn-about:hover {
   background: #3dc8b7;
