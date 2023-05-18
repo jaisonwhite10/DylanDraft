@@ -534,6 +534,18 @@ h6 {
     }
 }
 
+@media (max-width: 380px) {
+    #hero .btn-about {
+        margin-right: 835px;
+    }
+}
+
+@media (max-width: 360px) {
+    #hero .btn-about {
+        margin-right: 840px;
+    }
+}
+
 @media (max-width: 840px) {
     #hero .hero-header {
         margin-right: 100px;
@@ -581,6 +593,17 @@ h6 {
         margin-right: 800px;
     }
 }
+@media (max-width: 380px) {
+    #hero .hero-header {
+        margin-right: 835px;
+    }
+}
+
+@media (max-width: 360px) {
+    #hero .hero-header {
+        margin-right: 840px;
+    }
+}
 
 @media (max-width: 840px) {
     #hero .bi-heart-fill {
@@ -627,6 +650,17 @@ h6 {
 @media (max-width: 428px) {
     #hero .bi-heart-fill {
         margin-right: 800px;
+    }
+}
+@media (max-width: 380px) {
+    #hero .bi-heart-fill {
+        margin-right: 835px;
+    }
+}
+
+@media (max-width: 360px) {
+    #hero .bi-heart-fill {
+        margin-right: 840px;
     }
 }
 /* add media query for less than 400 px */
